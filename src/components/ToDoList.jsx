@@ -1,28 +1,16 @@
-import { useState } from "react";
 import AddTodoForm from "./AddTodoForm";
 import TodoItem from "./TodoItem";
 
-export default function TodoList() {
-  const [todos, setTodos] = useState([]);
-
-  const handleAddTodo = (text) => {
-    const newTodo = { id: Date.now(), text };
-    setTodos((prev) => [...prev, newTodo]);
-  };
-
-  const handleDeleteTodo = (id) => {
-    setTodos((prev) => prev.filter((todo) => todo.id !== id));
-  };
-
+export default function TodoList({ todos, onAddTodo, onDeleteTodo }) {
   return (
     <div>
-      <AddTodoForm onAddTodo={handleAddTodo} />
+      <AddTodoForm onAddTodo={onAddTodo} />
       <ul>
         {todos.map((todo) => (
           <TodoItem
             key={todo.id}
             task={todo}
-            onDelete={handleDeleteTodo}
+            onDelete={onDeleteTodo}
           />
         ))}
       </ul>
