@@ -1,4 +1,4 @@
-import TodoList from "./components/TodoList.jsx";
+import TodoList from "./components/ToDoList.jsx";
 
 export default function App() {
   return (
